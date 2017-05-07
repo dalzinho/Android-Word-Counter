@@ -17,8 +17,7 @@ public class StringSplitter {
     private HashMap<String, Integer> counter;
 
     //constructor
-    public StringSplitter(String input) {
-        this.originalString = input;
+    public StringSplitter() {
     }
 
     //getters
@@ -32,13 +31,13 @@ public class StringSplitter {
 
     //methods
 
-    public String strip(){
-        String strippedString = originalString.replaceAll("[^a-zA-z\\s]", "");
+    public String strip(String input){
+        String strippedString = input.replaceAll("[^a-zA-z\\s]", "");
         return strippedString.toLowerCase();
     }
 
-    public void splitString() {
-        String strippedString = strip();
+    public void splitString(String input) {
+        String strippedString = strip(input);
         wordList = strippedString.split(" ");
     }
 
@@ -54,10 +53,10 @@ public class StringSplitter {
         }
     }
 
-    public String doStuff(){
+    public String doStuff(String input){
         StringBuilder iteratedList = new StringBuilder();
 
-        splitString();
+        splitString(input);
         countWordsInWordList();
 
         for (String word : counter.keySet()){

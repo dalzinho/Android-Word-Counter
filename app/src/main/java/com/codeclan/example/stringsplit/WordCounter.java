@@ -1,5 +1,6 @@
 package com.codeclan.example.stringsplit;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -12,7 +13,6 @@ public class WordCounter extends AppCompatActivity {
 
     EditText enterText;
     Button submitTextForCounting;
-    TextView returnCountedList;
     StringSplitter splitmeister;
 
     @Override
@@ -22,12 +22,14 @@ public class WordCounter extends AppCompatActivity {
 
         enterText = (EditText) findViewById(R.id.enter_text_to_be_counted);
         submitTextForCounting = (Button) findViewById(R.id.submit_button);
-        returnCountedList = (TextView) findViewById(R.id.counted_words_list);
+        splitmeister = new StringSplitter();
 
     }
 
-    public void submitButtonPressed(View button){
-        splitmeister = new StringSplitter(enterText.getText().toString());
-        returnCountedList.setText(splitmeister.doStuff());
+    public void submitButtonPressed(View button) {
+        String countedWords = splitmeister.doStuff(enterText.getText().toString());
+        Intent intent = new Intent(WordCounter.this, CountedWordsResponseActivity.class);
+        intent.putExtra("key_counted_words", countedWords);
+        startActivity(intent);
     }
 }

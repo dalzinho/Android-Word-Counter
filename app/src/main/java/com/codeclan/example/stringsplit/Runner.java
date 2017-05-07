@@ -11,7 +11,7 @@ public class Runner {
                 "vile wind, slipped quickly through the glass doors of Victory Mansions,\n" +
                 "though not quickly enough to prevent a swirl of gritty dust from entering\n" +
                 "along with him.";
-        StringSplitter splitter = new StringSplitter(text);
-        splitter.doStuff();
+        StringSplitter splitter = new StringSplitter();
+        splitter.doStuff(text);
     }
 }
